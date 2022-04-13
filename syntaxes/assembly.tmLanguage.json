@@ -1,0 +1,124 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "ASM",
+	"patterns": [
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#entity"
+		},
+		{
+			"include": "#support"
+		},
+		{
+			"include": "#constant"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.import",
+					"match": "^(\t| )*(>|<)(\t| )"
+				},
+				{
+					"name": "keyword.control",
+					"match": "^(\t| )*(@|&|#)(\t| )"
+				},
+				{
+					"name": "keyword.operator.arithmetic",
+					"match": "(AD|SB|ML|DV)(\t| )"
+				},
+				{
+					"name": "keyword.control.conditional",
+					"match": "(JZ|JN)(\t| )"
+				},
+				{
+					"name": "keyword.operator.assignment",
+					"match": "(K|JP|LV|LD|MM|SC|RS|GD|PD|OS)(\t| )"
+				},
+				{
+					"name": "keyword.other",
+					"match": "(HM)(\t| )"
+				}
+			]
+		},
+		"entity": {
+			"patterns": [
+				{
+					"name": "entity.name.function",
+					"match": "^([a-z]|[A-Z])([a-z]|[A-Z]|[0-9]|-|_)*(\t| )"
+				}
+			]
+		},
+		"support": {
+			"patterns": [
+				{
+					"name": "support.function",
+					"match": "([a-z]|[A-Z])([a-z]|[A-Z]|[0-9]|-|_)*(\t| |$)"
+				}
+			]
+		},
+		"constant": {
+			"patterns": [
+				{
+					"name": "constant.numeric.integer.hexadecimal",
+					"match": "/([0-9]|[a-f]|[A-F]){1,4}(\t| |$)"
+				},
+				{
+					"name": "constant.numeric.integer.decimal",
+					"match": "=([0-9]){1,4}(\t| |$)"
+				},
+				{
+					"name": "constant.numeric.integer.octal",
+					"match": "@([0-7]){1,4}(\t| |$)"
+				},
+				{
+					"name": "constant.numeric.integer.binary",
+					"match": "#([0-1]){1,4}(\t| |$)"
+				},
+				{
+					"name": "constant.numeric.integer.other",
+					"match": "'(.){1,2}(\t| |$)"
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.number-sign.asm",
+					"match": "(\\;)([a-z]|[A-Z]|[0-9] |-|_)*($)"				
+				},
+				{
+					"begin": "(\\;)",
+					"beginCaptures": {
+						"0": {
+							"name": "punctuation.definition.comment.asm"
+						}
+					},
+					"end": "($)",
+					"name": "comment.line.number-sign.asm"
+				},
+				{
+					"captures": {
+						"0": {
+							"name": "punctuation.definition.comment.asm"
+						}
+					},
+					"match": "\\;$"
+				},
+				{
+					"include": "#comments-inline"
+				}
+			]
+		},
+		"comments_inline": {
+			
+		}
+	},
+	"scopeName": "source.asm"
+}

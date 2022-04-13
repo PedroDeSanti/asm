@@ -1,0 +1,25 @@
+{
+    "name": "asm",
+    "displayName": "asm",
+    "description": "Assembly",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.66.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "assembly",
+            "aliases": ["ASM", "assembly"],
+            "extensions": [".asm"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "assembly",
+            "scopeName": "source.asm",
+            "path": "./syntaxes/assembly.tmLanguage.json"
+        }]
+    }
+}
